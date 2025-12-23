@@ -1,0 +1,16 @@
+# Example override file for local development
+# Copy this to docker-compose.override.yml (gitignored) for local customizations
+
+version: '3.8'
+
+services:
+  scraper-lottery:
+    volumes:
+      # Mount source code for development (hot reload)
+      - ./src:/app/src:ro
+      - ./index.js:/app/index.js:ro
+    environment:
+      - NODE_ENV=development
+    # Override command for development with nodemon
+    # command: ["npm", "run", "dev"]
+
